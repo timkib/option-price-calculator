@@ -123,4 +123,29 @@ if st.button('Calculate price'):
     st.text(f"Call price: {np.round(V_0_call, 2)} | Put price: {np.round(V_0_put, 2)}")
 
 
+st.header('How does it work?')
 
+
+st.write('Vanilla Option: The classical option with the following payout:')
+st.latex(r'''
+    {(S - K, 0)^+ } 
+    ''')
+st.write('Where S denotes the stock price and K the strike price, the + indicates the positive part.')
+st.write('Barrier Option: the down-and-out option means, that if the stock price is below a certain value, it loses it reduces its vale to 0 for the rest of the period.')
+st.write('Monte-Carlo: ')
+st.latex(r'''
+    {V^{} = \frac{1}{N} \sum_{n=1}^{N} f(X_n) } 
+    ''')
+st.write("The idea is to approximate integrals or expectations using the empirical counterpart. It makes sense since the MC estimator is unbiased and converges in probability to the true value. For complex payouts or path dependent option it is a fast method. However, many realizations are necessary i.e. N should be large to accomplish decent results.")
+st.write('PDE-method: ')
+st.write('The idea is to use the black-scholes / heston pde and then using a grid where the derivatives are discretized using finite differences. The following calcualtor uses the crank nicolson scheme. PDE-methods are very accurate and stable, however with a finer time steps and more assets it takes exponentially more time.')
+st.write('Integral transformation: ')
+st.write('It transforms the payout using the LaPlace transformation and includes the characteristic function of the stock price. Then it inverts the term using Mellin transform. The integral is solved numerically. Integral transformation are efficient, but cannot handle path dependent options.')
+
+st.write('American options: ')
+st.write('By contrast, american options can be exercised at any point before maturity. The pricing is based on optimal stopping i.e.')
+st.latex(r'''
+    {V(t) = S_0(t) \sup_{\tau} \mathbb{E}\left[ \frac{X(\tau)}{S_0(\tau)} \bigg| \mathcal{F}_t \right]
+ } 
+    ''')
+st.write('S_0 denotes the prices the bond for discounting, tau is the optimal stopping time giving the natural filtration F_t.')
