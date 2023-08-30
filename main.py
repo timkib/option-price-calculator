@@ -136,9 +136,9 @@ st.write('Monte-Carlo: ')
 st.latex(r'''
     {V^{} = \frac{1}{N} \sum_{n=1}^{N} f(X_n) } 
     ''')
-st.write("The idea is to approximate integrals or expectations using the empirical counterpart. It makes sense since the MC estimator is unbiased and converges in probability to the true value. For complex payouts or path dependent option it is a fast method. However, many realizations are necessary i.e. N should be large to accomplish decent results.")
+st.write("The idea is to approximate integrals or expectations using the empirical counterpart. It makes sense since the MC estimator is unbiased and converges in probability to the true value. For complex payouts or path dependent option it is a fast method. However, many realizations are necessary i.e. N should be large to accomplish decent results. For american options it uses the Longstaff-Schwartz algorithm.")
 st.write('PDE-method: ')
-st.write('The idea is to use the black-scholes / heston pde and then using a grid where the derivatives are discretized using finite differences. The following calcualtor uses the crank nicolson scheme. PDE-methods are very accurate and stable, however with a finer time steps and more assets it takes exponentially more time.')
+st.write('The idea is to use the black-scholes / heston pde and then using a grid where the derivatives are discretized using finite differences. The following calcualtor uses the crank nicolson scheme. For american options it uses the Brennan–Schwartz algoritm. PDE-methods are very accurate and stable, however with a finer time steps and more assets it takes exponentially more time.')
 st.write('Integral transformation: ')
 st.write('It transforms the payout using the LaPlace transformation and includes the characteristic function of the stock price. Then it inverts the term using Mellin transform. The integral is solved numerically. Integral transformation are efficient, but cannot handle path dependent options.')
 
@@ -149,3 +149,7 @@ st.latex(r'''
  } 
     ''')
 st.write('S_0 denotes the prices the bond for discounting, tau is the optimal stopping time giving the natural filtration F_t.')
+st.write("All calculations are based on my OptionPricing package, for more information see my github [link](https://github.com/timkib/OptionPricing)")
+st.write('Heston model: ')
+st.write('The main difference is that in the heston model, the volatility is not assumed to constant but replaced by a stochastic process. This is motivated by the fact that in real markets the volatility of an asset is not constant.')
+
