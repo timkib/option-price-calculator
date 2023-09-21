@@ -3,7 +3,7 @@ import streamlit as st
 from calculations import BlackScholesMarket, HestonModel
 import numpy as np
 
-st.title('Option price calculator199')
+st.title('Option price calculator')
 st.markdown('Welcome to the option price calculator. It offers you a variety of option types including european options and american.')
 
 # default parameters
@@ -21,9 +21,6 @@ m = 500
 kappa = 0.5
 gamma0 = np.square(0.2)
 
-# create instance
-option_pricing_BS = BlackScholesMarket(t, S0, S_t, r, sigma, T, K, M)
-option_pricing_Heston = HestonModel(t, S0, S_t, r, sigma_tilde, T, K, M, lambda_parameter, m, kappa, gamma0)
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
@@ -32,11 +29,15 @@ with col2:
     K = st.number_input('Strike price', min_value=0.001)
 
 with col3:
-    r = st.number_input('Interest rate', min_value=0.001)
+    r = st.number_input('Interest rate (%)', min_value=0.001)
 
 with col4:
     sigma = st.number_input('Standard Deviation (%)', min_value=0.0001)
     sigma = sigma / 100
+
+# create instance
+option_pricing_BS = BlackScholesMarket(t, S0, S_t, r, sigma, T, K, M)
+option_pricing_Heston = HestonModel(t, S0, S_t, r, sigma_tilde, T, K, M, lambda_parameter, m, kappa, gamma0)
 
 
 col1, col2, col3, col4, col5 = st.columns(5)
