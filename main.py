@@ -3,7 +3,7 @@ import streamlit as st
 from calculations import BlackScholesMarket, HestonModel
 import numpy as np
 
-st.title('Option price calculator1')
+st.title('Option price calculator')
 st.markdown('Welcome to the option price calculator. It offers you a variety of option types including european options and american.')
 
 # default parameters
@@ -122,7 +122,7 @@ try:
             
         st.text(f"Call price: {np.round(V_0_call, 2)} | Put price: {np.round(V_0_put, 2)}")
 except:
-   st.text("Try another method.") 
+   st.text("This selection is not possible. Try another method.") 
 
 
 st.header('How does it work?')
