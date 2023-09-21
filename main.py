@@ -24,15 +24,19 @@ gamma0 = np.square(0.2)
 # create instance
 option_pricing_BS = BlackScholesMarket(t, S0, S_t, r, sigma, T, K, M)
 option_pricing_Heston = HestonModel(t, S0, S_t, r, sigma_tilde, T, K, M, lambda_parameter, m, kappa, gamma0)
-# col1, col2, col3 = st.columns(3)
-# with col1:
-#     S_t = st.number_input('Current stock price', min_value=0.0001)
-# with col2:
-#     K = st.number_input('Strike price', min_value=0.001)
 
-# with col3:
-#     sigma = st.number_input('Standard Deviation (%)', min_value=0.0001)
-#     sigma = sigma / 100
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    S_t = st.number_input('Current stock price', min_value=0.0001)
+with col2:
+    K = st.number_input('Strike price', min_value=0.001)
+
+with col3:
+    r = st.number_input('Interest rate', min_value=0.001)
+
+with col4:
+    sigma = st.number_input('Standard Deviation (%)', min_value=0.0001)
+    sigma = sigma / 100
 
 
 col1, col2, col3, col4, col5 = st.columns(5)
@@ -122,7 +126,7 @@ try:
             
         st.text(f"Call price: {np.round(V_0_call, 2)} | Put price: {np.round(V_0_put, 2)}")
 except:
-   st.text("This selection is not possible. Try another method.") 
+   st.text("This combination is not possible. Try another method.") 
 
 
 st.header('How does it work?')
