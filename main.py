@@ -3,7 +3,7 @@ import streamlit as st
 from calculations import BlackScholesMarket, HestonModel
 import numpy as np
 
-st.title('Option price calculator')
+st.title('Option price calculator1')
 st.markdown('Welcome to the option price calculator. It offers you a variety of option types including european options and american.')
 
 # default parameters
