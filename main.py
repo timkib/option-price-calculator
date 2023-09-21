@@ -30,7 +30,7 @@ with col2:
     K = st.number_input('Strike price', min_value=0.001)
 
 with col3:
-    r = st.number_input('Interest rate (%)', min_value=0.001)
+    r = st.number_input('Interest rate (%)', min_value=0.001) / 100
 
 with col4:
     sigma = st.number_input('Standard Deviation (%)', min_value=0.0001)
