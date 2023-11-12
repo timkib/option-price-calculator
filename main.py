@@ -37,7 +37,7 @@ with col4:
     sigma = sigma / 100
 
 with col5:
-    T = st.number_input('Days Until Maturity', min_value=1)
+    T = st.number_input('Years Until Maturity', min_value=1)
 
 # create instance
 option_pricing_BS = BlackScholesMarket(t, S0, S_t, r, sigma, T, K, M)
