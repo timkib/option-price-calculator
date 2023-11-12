@@ -33,7 +33,7 @@ with col3:
     r = st.number_input('Interest rate (%)', min_value=0.001) / 100
 
 with col4:
-    sigma = st.number_input('Standard Deviation (%)', min_value=0.0001)
+    sigma = st.number_input('Volatility (%)', min_value=0.0001)
     sigma = sigma / 100
 
 with col5:
