@@ -62,7 +62,7 @@ class BlackScholesMarket:
         v3 = np.exp(-self.r * (self.T - self.t)) * self.K * norm.cdf((np.log(self.S_t / self.K) + (self.r - np.square(self.sigma) / 2) * (self.T - self.t)) / (self.sigma * np.sqrt(self.T - self.t)))
         v4 = norm.cdf((np.log(self.H**2 / (self.K * self.S_t)) + (self.r-self.sigma**2 / 2) * (self.T - self.t)) / (self.sigma * np.sqrt(self.T - self.t)))
         v5 = (self.H / self.S_t)**(2*self.r/self.sigma**2 - 1) * v4
-        return self.S_t * (norm.cdf(self.d_1) - v2 - v3 - v5) 
+        return np.max(self.S_t * (norm.cdf(self.d_1) - v2 - v3 - v5),0.01) 
         
     # Monte Carlo
     # def f(self, simulated_price, K):
