@@ -133,7 +133,7 @@ try:
 except:
    st.text("This combination is not possible. Try another method.")
 
-st.text("With some methods, the calculation can take up to 1 minute.")
+st.info(("With some methods, the calculation can take up to 1 minute.")
 
 
 st.header('How does it work?')
