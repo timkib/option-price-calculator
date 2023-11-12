@@ -12,7 +12,7 @@ t = 0
 # S_t = S0
 # r = 0.05
 # sigma = 0.3
-T = 1
+# T = 1
 K = 100
 M = 1000
 sigma_tilde = 0.5
@@ -22,7 +22,7 @@ kappa = 0.5
 gamma0 = np.square(0.2)
 
 
-col1, col2, col3, col4 = st.columns(4)
+col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     S0 = st.number_input('Current stock price', min_value=0.0001)
     S_t = S0
@@ -35,6 +35,9 @@ with col3:
 with col4:
     sigma = st.number_input('Standard Deviation (%)', min_value=0.0001)
     sigma = sigma / 100
+
+with col5:
+    T = st.number_input('Days Until Maturity', min_value=1)
 
 # create instance
 option_pricing_BS = BlackScholesMarket(t, S0, S_t, r, sigma, T, K, M)
