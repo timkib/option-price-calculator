@@ -131,7 +131,9 @@ try:
             
         st.text(f"Call price: {np.round(V_0_call, 2)} | Put price: {np.round(V_0_put, 2)}")
 except:
-   st.text("This combination is not possible. Try another method.") 
+   st.text("This combination is not possible. Try another method.")
+
+st.text("With some methods, the calculation can take up to 1 minute.")
 
 
 st.header('How does it work?')
