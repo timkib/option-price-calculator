@@ -22,7 +22,7 @@ class BlackScholesMarket:
         self.H = None
         self.d_1 = None
         self.d_2 = None
-        self.d_calculator() # calculates d of for BS formula
+        self.d_calculator()
 
     # Black Scholes eu call formula
     def d_calculator(self):
